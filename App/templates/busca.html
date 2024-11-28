@@ -22,9 +22,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ url_for('Busca.buscaArtist') }}">Buscar artista</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('Recomendacao.recomendation') }}">Recomendações</a>
-                    </li>
                 </ul>
                 <span class="navbar-text">
                   HeadPhone Stats
@@ -140,19 +137,21 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>  
 
         <br>
-
+ 
         <div class="row justify-content-center mt-5">
           <div class="col-12 col-md-10">
               <h3 class="text-center">Quão popular {{ busca }} é em relação a suas últimas pesquisas</h3>
-              <div class="card">
-                  <div class="card-body">
-                      <canvas id="popularityChart" style="max-height: 400px;">
-                        <img src="{{ url_for('static', filename='ArchImg/grafico_popularidade_pesquisaSkillet.png') }}" alt="Gráfico de Popularidade" width="100%">
-                      </canvas>
+              <div class="row justify-content-center mt-5">
+                <form action="{{ url_for('Busca.graficoPNG') }}" method="GET">
+                  <div class="text-center mb-md-4">
+                    <button class="btn btn-primary btn-lg">
+                      Veja o Gráfico
+                    </button>
                   </div>
+                </form>
               </div>
           </div>
         </div>

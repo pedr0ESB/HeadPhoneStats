@@ -8,7 +8,7 @@ db = DatabaseConnection(host="localhost", dbname="pesquisaHPS", user="postgres",
 
 def dadosGraficoBusca():
 
-    query = (f"select artist_name, popularity, followers, urlimg from artists where artist_name != '{session['dictSpotifyMain'][0]['Nome']}' order by id_artist desc limit 4;")
+    query = (f"select artist_name, popularity, followers, urlimg from artists where artist_name != '{session['dictSpotifyMain'][0]['Nome']}' order by data_insert desc limit 4;")
 
     data = db.query_data(query)
 

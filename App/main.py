@@ -1,7 +1,6 @@
 from flask import Flask
 from routes.home.homeRoute import *
 from routes.busca.buscaRoute import *
-from routes.recomendations.recomendacao import *
 import os 
 
 load_dotenv()
@@ -18,6 +17,3 @@ mhsApp.register_blueprint(Logon)
 
 mhsApp.register_blueprint(BuscMSZ)
 
-#Registro da rota de Recomendações
-
-mhsApp.register_blueprint(Recomendation)

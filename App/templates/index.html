@@ -24,9 +24,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('Busca.buscaArtist') }}">Buscar artista</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('Recomendacao.recomendation') }}">Recomendações</a>
-                </li>
             </ul>
             <span class="navbar-text">
               HeadPhone Stats
@@ -92,49 +89,6 @@
             <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/115897977&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/dosill" title="J_on_J" target="_blank" style="color: #cccccc; text-decoration: none;">J_on_J</a> · <a href="https://soundcloud.com/dosill/rap-god-eminem" title="Rap God - Eminem" target="_blank" style="color: #cccccc; text-decoration: none;">Rap God - Eminem</a></div>
           </div>
         </figure>
-      </div>
-    </div>
-    <div class="container my-3 my-sm-5">
-      <h1 class="text-center mb-md-4">
-        Descubra
-      </h1>
-      <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
-          <p class="lead text center">
-            Descubra milhares de artistas, álbuns e músicas. A nossa ferramenta de pesquisa 
-            possibilita a descoberta de todas as informações por trás das trilhas sonoras mais íconicas.
-            Tudo personalizado para você!
-          </p>
-          <div class="container text-center">
-            <a href="{{ url_for('Busca.buscaArtist') }}" class="text-bg-light page-link">
-            Tente<img src="{{ url_for('static', filename='img/lupa.png') }}" alt="Search" width="25px">
-            </a>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <p class="lead text center">
-            Descobrindo os seus próprios gostos, pela integração com o Spotify, você pode saber 
-            o seu artista mais ouvido, quantos minutos você ouviu durante o mês, quais sãos as suas músicas favoritas 
-            e muito mais!
-          </p>
-          <div class="container text-center">
-            <a href="{{ url_for('Recomendacao.recomendation') }}" class="text-bg-light page-link">
-            Experimente<img src="{{ url_for('static', filename='img/arrow-arrow.png') }}" alt="Search" width="25px">
-            </a>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <p class="lead text center">
-            Descubra os gêneros mais ouvidos em cada época marcante da história da música. 
-            Uma visão geral e panorâmica sobre toda a história da música e uma visão específica de cada
-            gênero e banda mais relevante. 
-          </p>
-          <div class="container text-center">
-            <a href="#" class="text-bg-light page-link">
-            Veja<img src="{{ url_for('static', filename='img/grafico-de-barras.png') }}" alt="Search" width="25px">
-            </a>
-          </div>
-        </div>
       </div>
     </div>
 </div>

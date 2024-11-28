@@ -22,9 +22,24 @@ def buscaArtist():
             buscaSpotify = buscaArtistaSpotify()
             TopTracks = toptracks()
             Graficos = grafico()
+            session['PathGrafico'] = Graficos
         else:
             pass
 
         return render_template('busca.html', busca = busca, discos = discos, buscaSpotify= buscaSpotify, TopTracks=TopTracks, Graficos=Graficos)
     
     return render_template('busca.html', busca = busca)
+
+@BuscMSZ.route('/Busca/Grafico', methods=['GET'])
+def graficoPNG():
+
+    path = session['PathGrafico']
+
+    if path:
+        try:
+            return send_file(path, mimetype='image/png')
+        except FileNotFoundError:
+            return "Arquivo não encontrado", 404
+    else:
+        return "Caminho do gráfico não definido na sessão", 400
+    

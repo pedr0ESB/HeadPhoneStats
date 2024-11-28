@@ -151,37 +151,39 @@ def toptracks():
     else:
         print(f"Erro: {response.status_code} - {response.json()}")
         return None
-    
+
+# API TORNOU-SE OBSOLETA NO DIA 28/11/2024
+
 # busca recomendações pelo id do artista pesquisado agora 
-def recomendations():
+# def recomendations():
 
-    if not session or 'idSpotify' not in session or 'token' not in session:
-        mensagem = "Erro"
-        return mensagem
+#     if not session or 'idSpotify' not in session or 'token' not in session:
+#         mensagem = "Erro"
+#         return mensagem
 
-    recomendedArtists = []
-    idSpotify = session['idSpotify']
-    token = session['token']
-    headers = {
-        'Authorization': f'Bearer {token}'
-    }
+#     recomendedArtists = []
+#     idSpotify = session['idSpotify']
+#     token = session['token']
+#     headers = {
+#         'Authorization': f'Bearer {token}'
+#     }
 
-    response = requests.get(f'https://api.spotify.com/v1/artists/{idSpotify}/related-artists', headers=headers)
+#     response = requests.get(f'https://api.spotify.com/v1/artists/{idSpotify}/related-artists', headers=headers)
     
-    if response.status_code == 200:
-        retorno = response.json()
+#     if response.status_code == 200:
+#         retorno = response.json()
 
-        for artist in retorno.get('artists', []):
-            dictArtistReco = {'Nome': artist['name'], 'id': artist['id'], 'image':artist['images'][0]}
-            recomendedArtists.append(dictArtistReco)
+#         for artist in retorno.get('artists', []):
+#             dictArtistReco = {'Nome': artist['name'], 'id': artist['id'], 'image':artist['images'][0]}
+#             recomendedArtists.append(dictArtistReco)
 
 
 
-        return recomendedArtists
+#         return recomendedArtists
     
-    else:
-        mensagem = "Erro"
-        return mensagem
+#     else:
+#         mensagem = "Erro"
+#         return mensagem
     
 def grafico():
     
@@ -189,15 +191,9 @@ def grafico():
 
     graficos = gerarGraficoBusca(dados)
 
-    return graficos
-
-def open_file():
     current_dir = os.path.dirname(__file__)
-    path = os.path.abspath(os.path.join(current_dir, '..', 'Static', 'ArchImg'))
+    path = os.path.abspath(os.path.join(current_dir, '..', 'Static', graficos))
 
-    image_filename = f'grafico_popularidade_pesquisa{session['dictSpotifyMain'][0]["Nome"]}.png'
-    image_path = os.path.join(path, image_filename)
-
-    return send_file(image_path, as_attachment=True)
+    return path
 
 
