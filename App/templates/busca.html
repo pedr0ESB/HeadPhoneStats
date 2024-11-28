@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeadPhone Stats | Busca</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-sm bg-black">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('Home.home') }}"><img src="{{ url_for ('static', filename='img/logo.png')}}" alt="LogoNav-Bar" width="50px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('Home.home') }}">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('Busca.buscaArtist') }}">Buscar artista</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('Recomendacao.recomendation') }}">Recomendações</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                  HeadPhone Stats
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-3 my-sm-5">
+        <h1 class="text-center mb-md-4">
+          Busque o seu artista ou banda favoritos!
+        </h1>
+        <p class="lead text center">
+          A poderosa ferramenta de busca do <strong>HeadPhone Stats</strong> oferece inúmeras possibilidades de pesquisas.
+          Com ela você descobre tudo sobre o artista ou banda que você mais gosta. Que tal experimentar!? 
+        </p>
+        <br>
+        <form action="{{ url_for('Busca.buscaArtist') }}" method="POST" id="disco-form" name="disco-form">
+          <div class="container my-2">
+            <input type="text" required class="form-control form-control-lg" id="artistName" name="artistName" style="padding-right: 5px;" placeholder="Tente um artista ou banda...">
+            <br>
+            <div class="text-center mb-md-4">
+              <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+            </div>
+          </div>
+        </form>
+    </div>
+    {% if busca | length != 0%}    
+    <div class="container my-3 my-sm-5">
+        <h1 class="text-center mb-md-4">
+          {{ busca }}
+        </h1>
+        {% if 'Erro' in discos %}
+        <h5 class="text-center">
+          {{ discos['Erro'] }} 
+        </h5>
+        {% else %}
+        {% if 'Tipo' in buscaSpotify == 'Person' %}
+        <h5 class="text-center">
+            O artista lançou {{ discos | length }} álbuns de estúdio.  
+        </h5>
+        {% else %}
+        <h5 class="text-center">
+          O artista lançou {{ discos | length }} álbuns de estúdio.  
+        </h5>
+        {% endif %}
+        <br>
+        <div class="row">
+            {% for disco in discos %}
+            <div class="col-12 col-md-6 col-lg-4">
+              <p>Titúlo: {{ disco['Nome'] }}</p>
+              <p>Lançamento: {{ disco['Lancamento'] }}</p>
+              <figure class="figure">
+                <div class="embed-responsive embed-responsive-1by1 figure-img">
+                  <img src="{{ disco['Capas'] }}" width="150px">
+                </div>
+              </figure>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <br>
+        <h1 class="text-center mb-md-4">
+          Spotify
+        </h1>
+        <h5> Geral </h5>
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Popularidade
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Total de seguidores: {{ buscaSpotify[0]['Followers'] }} </div>
+                  <div class="accordion-body">{{ buscaSpotify[0]['Nome']}}, no Spotify, possui uma popularidade de {{ buscaSpotify[0]['Popularidade'] }}% em relação aos usuários da plataforma.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Gêneros
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">{{ buscaSpotify[0]['Nome']}} transitou entre {{ buscaSpotify[0]['Genres'] | length}} gêneros, sendo eles: </div>
+                  {% for genero in buscaSpotify[0]['Genres'] %}
+                  <div class="accordion-body"> - {{ genero }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Músicas mais ouvidas
+                  </button>
+                </h2>
+                {% if TopTracks['tracks'] | length != 0 %}
+                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">As Top 3 mais ouvidas</div>
+                  <div class="accordion-body"> - {{ TopTracks['tracks'][0]['name'] }}</div>
+                  <div class="accordion-body"> - {{ TopTracks['tracks'][1]['name'] }}</div>
+                  <div class="accordion-body"> - {{ TopTracks['tracks'][2]['name'] }}</div>
+                </div>
+                {% else %}
+                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Sem dados</div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row justify-content-center mt-5">
+          <div class="col-12 col-md-10">
+              <h3 class="text-center">Quão popular {{ busca }} é em relação a suas últimas pesquisas</h3>
+              <div class="card">
+                  <div class="card-body">
+                      <canvas id="popularityChart" style="max-height: 400px;">
+                        <img src="{{ url_for('static', filename='ArchImg/grafico_popularidade_pesquisaSkillet.png') }}" alt="Gráfico de Popularidade" width="100%">
+                      </canvas>
+                  </div>
+              </div>
+          </div>
+        </div>
+    
+    </div>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+</body>
+</html>

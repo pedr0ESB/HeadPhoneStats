@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeadPhone Stats | Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+
+<body>
+    
+  <nav class="navbar navbar-expand-sm bg-black">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('Home.home') }}"><img src="{{ url_for ('static', filename='img/logo.png')}}" alt="LogoNav-Bar" width="50px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('Home.home') }}">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('Busca.buscaArtist') }}">Buscar artista</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('Recomendacao.recomendation') }}">Recomendações</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+              HeadPhone Stats
+            </span>
+        </div>
+    </div>
+  </nav>
+
+
+  
+  <div class="container my-3 my-sm-5">
+    <h1 class="text-center mb-md-4">
+      HeadPhone Stats
+    </h1>
+    <p class="lead text center">
+      O <strong>HeadPhone Stats</strong> é a DashBoard personalizada para você! Feita para trazer informações precisas
+      e pontuais sobre o mundo da música e as suas experiências musicais. Através da integração com o <strong>Spotify</strong>,
+      o HeadPhone Stats centraliza os seus artistas, bandas, álbuns e minutos que você os ouviu em <strong>apenas um lugar</strong>.
+    </p>
+    <br>
+    <h2 class="text-center mb-sm-4">
+      Prévias
+    </h2>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <figure class="figure">
+          <div class="embed-responsive embed-responsive-1by1 figure-img">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1480717033&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/linkinpark" title="LINKIN PARK" target="_blank" style="color: #cccccc; text-decoration: none;">LINKIN PARK</a> · <a href="https://soundcloud.com/linkinpark/faint-1" title="Faint" target="_blank" style="color: #cccccc; text-decoration: none;">Faint</a></div>
+          </div>
+        </figure>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <figure class="figure">
+          <div class="embed-responsive embed-responsive-1by1 figure-img">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1459951630&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ben-elgut" title="Bengerman" target="_blank" style="color: #cccccc; text-decoration: none;">Bengerman</a> · <a href="https://soundcloud.com/ben-elgut/the-beatles-hey-jude" title="The Beatles - Hey Jude" target="_blank" style="color: #cccccc; text-decoration: none;">The Beatles - Hey Jude</a></div>
+          </div>
+        </figure>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <figure class="figure">
+          <div class="embed-responsive embed-responsive-1by1 figure-img">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/56581103&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/luakabop" title="Luaka Bop" target="_blank" style="color: #cccccc; text-decoration: none;">Luaka Bop</a> · <a href="https://soundcloud.com/luakabop/tim-maia-que-beleza" title="Tim Maia - Que Beleza" target="_blank" style="color: #cccccc; text-decoration: none;">Tim Maia - Que Beleza</a></div>
+          </div>
+        </figure>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <figure class="figure">
+          <div class="figure-img">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/746403835&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/wellington-correia-193430503" title="Wellington Correia" target="_blank" style="color: #cccccc; text-decoration: none;">Wellington Correia</a> · <a href="https://soundcloud.com/wellington-correia-193430503/joao-bosco-vinicius-feat-matheus-segunda-taca" title="João Bosco  Vinicius Feat Matheus   Segunda Taça" target="_blank" style="color: #cccccc; text-decoration: none;">João Bosco  Vinicius Feat Matheus   Segunda Taça</a></div>
+          </div>
+        </figure>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <figure class="figure">
+          <div class="figure-img">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/197499806&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/xmusicx13" title="xmusicx" target="_blank" style="color: #cccccc; text-decoration: none;">xmusicx</a> · <a href="https://soundcloud.com/xmusicx13/hozier-take-me-to-church" title="Hozier - Take Me To Church" target="_blank" style="color: #cccccc; text-decoration: none;">Hozier - Take Me To Church</a></div>
+          </div>
+        </figure>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <figure class="figure">
+          <div class="figure-img">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/115897977&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/dosill" title="J_on_J" target="_blank" style="color: #cccccc; text-decoration: none;">J_on_J</a> · <a href="https://soundcloud.com/dosill/rap-god-eminem" title="Rap God - Eminem" target="_blank" style="color: #cccccc; text-decoration: none;">Rap God - Eminem</a></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+    <div class="container my-3 my-sm-5">
+      <h1 class="text-center mb-md-4">
+        Descubra
+      </h1>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+          <p class="lead text center">
+            Descubra milhares de artistas, álbuns e músicas. A nossa ferramenta de pesquisa 
+            possibilita a descoberta de todas as informações por trás das trilhas sonoras mais íconicas.
+            Tudo personalizado para você!
+          </p>
+          <div class="container text-center">
+            <a href="{{ url_for('Busca.buscaArtist') }}" class="text-bg-light page-link">
+            Tente<img src="{{ url_for('static', filename='img/lupa.png') }}" alt="Search" width="25px">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <p class="lead text center">
+            Descobrindo os seus próprios gostos, pela integração com o Spotify, você pode saber 
+            o seu artista mais ouvido, quantos minutos você ouviu durante o mês, quais sãos as suas músicas favoritas 
+            e muito mais!
+          </p>
+          <div class="container text-center">
+            <a href="{{ url_for('Recomendacao.recomendation') }}" class="text-bg-light page-link">
+            Experimente<img src="{{ url_for('static', filename='img/arrow-arrow.png') }}" alt="Search" width="25px">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <p class="lead text center">
+            Descubra os gêneros mais ouvidos em cada época marcante da história da música. 
+            Uma visão geral e panorâmica sobre toda a história da música e uma visão específica de cada
+            gênero e banda mais relevante. 
+          </p>
+          <div class="container text-center">
+            <a href="#" class="text-bg-light page-link">
+            Veja<img src="{{ url_for('static', filename='img/grafico-de-barras.png') }}" alt="Search" width="25px">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+</body>
+</html>
